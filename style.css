@@ -1,0 +1,52 @@
+body {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-top: 100px;
+}
+
+#top-bar {
+    display: flex;
+    background-color: gray;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+h2 {
+    color: white;
+}
+
+#site {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+#bottom-bar {
+    display: flex;
+    background-color: gray;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.game-tile {
+    display: flex;
+    flex: 0 0 calc(33.33% - 20px);
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    margin: 10px;
+}
