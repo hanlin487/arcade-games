@@ -5,7 +5,7 @@ body {
 
 #top-bar {
     display: flex;
-    background-color: gray;
+    background-color: rgb(99, 8, 255);
     position: fixed;
     width: 100%;
     top: 0;
@@ -29,7 +29,7 @@ h2 {
 
 #bottom-bar {
     display: flex;
-    background-color: gray;
+    background-color: rgb(99, 8, 255);
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -49,4 +49,6 @@ h2 {
     border-width: 1px;
     border-radius: 10px;
     margin: 10px;
+    background-color: rgb(73, 252, 100);
+    color: rgb(73, 49, 255);
 }
