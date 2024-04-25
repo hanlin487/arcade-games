@@ -1,0 +1,27 @@
+#game_board {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    gap: 1px;
+    background-color: aqua;
+    border: 2px solid black;
+    border-style: solid;
+}
+
+.sudoku_tile {
+    display: flex;
+    position: relative;
+    flex: 0 0 calc(33.33% - 20px);
+    flex-direction: column;
+    text-align: center;
+    background-color: chocolate;
+    color: black;
+    margin: 5px;
+}
+
+.sudoku_tile:nth-child(3n) {
+    border-right: 3px solid black;
+}
+
+h3 {
+    align-items: center;
+}
