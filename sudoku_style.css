@@ -1,27 +1,18 @@
-#game_board {
+.grid-container {
     display: grid;
-    grid-template-columns: repeat(9, 40px);
-    gap: 1px;
+    grid-template-columns: auto auto auto;
     background-color: aqua;
-    border: 2px solid black;
-    border-style: solid;
+    padding: 10px;
 }
-
-.sudoku_tile {
-    display: flex;
-    position: relative;
-    flex: 0 0 calc(33.33% - 20px);
-    flex-direction: column;
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
     text-align: center;
-    background-color: chocolate;
-    color: black;
-    margin: 5px;
-}
-
-.sudoku_tile:nth-child(3n) {
-    border-right: 3px solid black;
 }
 
 h3 {
     align-items: center;
+    padding: 50px;
 }
