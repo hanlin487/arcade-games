@@ -1,18 +1,47 @@
-.grid-container {
+h3 {
+    align-items: center;
+    padding: 20px;
+} 
+
+.board {
     display: grid;
     grid-template-columns: auto auto auto;
     background-color: aqua;
-    padding: 10px;
+    padding: 100px;
+    border: 10px;
+    /* flex-wrap: wrap; */
 }
-.grid-item {
+
+.tile {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    display: flex;
 }
 
-h3 {
-    align-items: center;
-    padding: 50px;
+.tile-start {
+    background-color: white;
+}
+
+.done {
+    background-color: rgb(73, 252, 100);
+    padding: 20px;
+    font-size: 15px;
+    color: black;
+    text-shadow: 1px;
+    border-color: rgb(73, 49, 255);
+    align-content: center;
+    position: absolute;
+    bottom: calc(15% - 10px);
+    left: calc(50%-50px);
+}
+
+.no-edit {
+    background-color: blanchedalmond;
+}
+
+.editable {
+    
 }
