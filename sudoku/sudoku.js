@@ -1,4 +1,6 @@
-window.onload = function() {
+window.onload = () => {
+    done = document.querySelector('.done')
+    done.addEventListener("click", checkSolution);
     setupBoard();
 }
 
@@ -6,33 +8,16 @@ var board = Array.from({length: 9}, () => Array(9).fill(''))
 
 function setupBoard() {
     var boardContainer = document.querySelector('.board');
-    var button = document.querySelector("board").addEventListener("click", checkSolution());
 
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            let tile = document.createElement("div");
-            tile.id = i.toString() + "-" + j.toString();
-            if (board[i][j] != '') {
-                tile.classList.add("no-edit");
-                tile.innerText = board[i][j];
-            }
-            else {
-                tile.classList.add("editable");
-                tile.contentEditable = "true";
-            }
-
-            tile.addEventListener("click", editTile);
+            tile = document.createElement("div")
             tile.classList.add("tile")
-            boardContainer.appendChild(tile);
-
-            
-
+            tile.innerText = "0";
+            tile.contentEditable = true;
+            boardContainer.append(tile);
         }
     }
-}
-
-function editTile() {
-    console.log("hello world");
 }
 
 function checkSolution() {

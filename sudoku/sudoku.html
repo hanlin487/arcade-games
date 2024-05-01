@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="sudoku_style.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./sudoku_style.css">
     <script src="sudoku.js" async defer></script>
 </head>
 <body>
@@ -14,9 +14,13 @@
     </div>
     <div id="site">
         <h3>Please select a tile to enter your input. Hit 'Done' to check if your solution is correct, note that this game doesn't offer you hints so that you can self-learn solution methods.</h3>
-
-        <div class="board"></div>
-        <button class="done">Done</button>
+        <div class="horizontal">
+            <div class="board"></div>
+            <div class="buttons">
+                <button class="done">Done</button>
+                <button class="done">Reset</button>
+            </div>
+        </div>
     </div>
     <div id="bottom-bar">
         <h2>Hanlin and Divya's Web Games</h2>
