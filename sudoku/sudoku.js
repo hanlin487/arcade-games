@@ -1,6 +1,12 @@
 window.onload = () => {
     done = document.querySelector('.done')
     done.addEventListener("click", checkSolution);
+    reset = document.querySelector('#reset')
+    reset.addEventListener("click", resetBoard);
+    // tileSize = document.querySelectorAll(".tile")
+    // for (let t = 1; t < tileSize.length; t++) {
+    //     tileSize[t].addEventListener("input", (tile) => checkLen(tile.target))
+    // }
     setupBoard();
 }
 
@@ -22,6 +28,24 @@ function setupBoard() {
 
 function checkSolution() {
     console.log("I'm checking the solution, wait...");
+}
+
+function resetBoard() {
+    console.log("I'm resetting the board")
+
+    tiles = document.querySelectorAll(".tile")
+    for (let i = 0; i < tiles.length; i++) {
+        tiles[i].innerText = "0";
+    }
+}
+
+function checkLen(inp) {
+    console.log("don't type too much!")
+    if (inp.length > 1) {
+        console.log("too much typed")
+        spot.innerText = spot.innerText.substring(0, 1)
+    }
+
 }
 
 // var numSelected = null;
