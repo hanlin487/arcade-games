@@ -6,6 +6,7 @@ let speedX = 0
 let speedY = 0
 let food = {x : 0, y : 0}
 let snake = [{x : rows / 2 * tileSize, y : cols / 2 * tileSize}]
+let gameInterval
 let gameOver = false
 
 /* load an initial state and wait for user input to begin game */
@@ -15,13 +16,15 @@ window.onload = () => {
     generateFood()
     drawFood()
     document.addEventListener("keydown", changeDirection)
-    setInterval(run, 1000/5)
+    gameInterval = setInterval(run, 1000/5)
 }
 
 // function to "run" the game where we constantly update the game by redrawing the board, food, and snake
 // based on their X and Y values
 function run() {
     if (gameOver) {
+        alert("Game Over!")
+        clearInterval(gameInterval)
         return NaN
     }
     drawBoard()
@@ -111,7 +114,7 @@ function snakeEat() {
 }
 
 function validPos() {
-    if (snake[0].x < 0 || snake[0].x >= cols * tileSize) {
+    if (snake[0].x < 0 || snake[0].x >= cols * tileSize || snake[0].y < 0 || snake[0].y >= rows * tileSize) {
         return false
     }
     else if (snake.slice(1).some((body) => body.x == snake[0].x && body.y == snake[0].y)) {
