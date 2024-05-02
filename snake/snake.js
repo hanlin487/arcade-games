@@ -16,7 +16,7 @@ window.onload = () => {
     generateFood()
     drawFood()
     document.addEventListener("keydown", changeDirection)
-    gameInterval = setInterval(run, 1000/5)
+    gameInterval = setInterval(run, 1000/12)
 }
 
 // function to "run" the game where we constantly update the game by redrawing the board, food, and snake
@@ -75,6 +75,7 @@ function moveSnake() {
     }
 }
 
+// draw snake and body segments
 function drawSnake() {
     ctx.fillStyle = "#ffffff"
     ctx.fillRect(snake[0].x, snake[0].y, tileSize, tileSize) 
@@ -84,6 +85,7 @@ function drawSnake() {
     })
 }
 
+// direction changing 
 function changeDirection(event) {
     if (event.code == "ArrowUp" && speedY != 1) { 
         speedX = 0;
@@ -103,6 +105,7 @@ function changeDirection(event) {
     }
 }
 
+// check to see if snake is at food position aka eating
 function snakeEat() {
     let head = snake[0]
     
@@ -113,6 +116,7 @@ function snakeEat() {
     return false
 }
 
+// position checking for within board boundaries AND if snake collides into itself
 function validPos() {
     if (snake[0].x < 0 || snake[0].x >= cols * tileSize || snake[0].y < 0 || snake[0].y >= rows * tileSize) {
         return false
@@ -123,6 +127,7 @@ function validPos() {
     return true
 }
 
+// general game status checker after each "frame" or "move"
 function checkGame() {
     if (snakeEat()){
         generateFood()
@@ -131,5 +136,4 @@ function checkGame() {
     if (!validPos()) {
         gameOver = true
     }
-
 }
