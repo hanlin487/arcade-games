@@ -3,8 +3,8 @@ window.onload = () => {
     done.addEventListener("click", checkSolution);
     reset = document.querySelector('#reset')
     reset.addEventListener("click", resetBoard);
-    tileSize = document.querySelectorAll(".tile")
     setupBoard();
+    tileSize = document.querySelectorAll(".tile")
     for (let t = 0; t < tileSize.length; t++) {
         tileSize[t].addEventListener("keydown", (event) => {
             if (isNaN(parseInt(event.key))) {
@@ -34,6 +34,7 @@ function setupBoard() {
             }
             else {
                 tile.value = sudokuBoard[i][j]
+                tile.style.fontWeight = "bold"
                 tile.readOnly = true;
             }
             boardContainer.append(tile);
@@ -67,11 +68,31 @@ function checkSolution() {
 
     console.log(player)
     
+    var site = document.querySelector('.content');
+
     if (isSudokuValid(player)) {
         console.log("Congratulations! You solved the Sudoku puzzle!");
-        // create div of text instead...
-    } else {
+        if (document.querySelector(".win_response") != null) {
+            message = document.createElement("h2")
+            message.innerText = "Congratulations! You solved the Sudoku puzzle!"
+        }
+    } 
+    else {
         console.log("Oops! There seems to be a mistake in your solution.");
+        if (document.querySelector(".win_response") == null) {
+            message = document.createElement("h2")
+            message.innerText = "Oops! There seems to be a mistake in your solution."
+        }
+    }
+
+    if (document.querySelector(".win_response") == null) {
+        message.classList.add("win_response")
+        if (site == null) {
+            console.log("site was null")
+        }
+        else {
+            site.insertBefore(message, document.querySelector(".horizontal"))
+        }
     }
 }
 
@@ -84,38 +105,56 @@ function isSudokuValid(board) {
     return true;
 }
 
+// numbers = [1,2,3,4,5,6,7,8,9]
+
 function isRowValid(board, row) {
-    var set = new Set();
-    for (let j = 0; j < 9; j++) {
-        if (board[row][j] !== 0 && set.has(board[row][j])) {
+    nums_seen = []
+    for (let i = 0; i < 10; i++) {
+        value = board[row][i]
+        if (value == "") {
             return false;
         }
-        set.add(board[row][j]);
+        nums_seen.push(value)
+        if (value in nums_seen) {
+            return false
+        }
+        console.log(nums_seen)
     }
-    return true;
+
+    return true
 }
 
 function isColumnValid(board, col) {
-    var set = new Set();
+    nums_seen = []
     for (let i = 0; i < 9; i++) {
-        if (board[i][col] !== 0 && set.has(board[i][col])) {
+        value = board[i][col]
+        if (value == "") {
             return false;
         }
-        set.add(board[i][col]);
+        nums_seen.push(value)
+        if (value in nums_seen) {
+            return false;
+        }
+        console.log(nums_seen)
     }
+    
     return true;
 }
 
 function isSquareValid(board, square) {
-    var set = new Set();
+    nums_seen = []
     var startRow = Math.floor(square / 3) * 3;
     var startCol = (square % 3) * 3;
     for (let i = startRow; i < startRow + 3; i++) {
         for (let j = startCol; j < startCol + 3; j++) {
-            if (board[i][j] !== 0 && set.has(board[i][j])) {
+            value = board[i][j]
+            if (value == "") {
                 return false;
             }
-            set.add(board[i][j]);
+            nums_seen.push(value)
+            if (value in nums_seen) {
+                return false;
+            }
         }
     }
     return true;
@@ -130,6 +169,12 @@ function resetBoard() {
             tiles[i].value = "";
         }
     }
+
+    // if win_response div exists, delete it
+    win_resp = document.querySelector(".win_response")
+    if (win_resp != null) {
+        win_resp.remove()
+    }
 }
 
 function checkLen(inp) {
@@ -141,15 +186,27 @@ function checkLen(inp) {
 
 }
 
+// function fillSudoku(board) {
+//     // dummy test function
+//     board[0] = [5, 3, 0, 0, 7, 0, 0, 0, 0];
+//     board[1] = [6, 0, 0, 1, 9, 5, 0, 0, 0];
+//     board[2] = [0, 9, 8, 0, 0, 0, 0, 6, 0];
+//     board[3] = [8, 0, 0, 0, 6, 0, 0, 0, 3];
+//     board[4] = [4, 0, 0, 8, 0, 3, 0, 0, 1];
+//     board[5] = [7, 0, 0, 0, 2, 0, 0, 0, 6];
+//     board[6] = [0, 6, 0, 0, 0, 0, 2, 8, 0];
+//     board[7] = [0, 0, 0, 4, 1, 9, 0, 0, 5];
+//     board[8] = [0, 0, 0, 0, 8, 0, 0, 7, 9];
+// }
+
 function fillSudoku(board) {
-    // dummy test function
-    board[0] = [5, 3, 0, 0, 7, 0, 0, 0, 0];
-    board[1] = [6, 0, 0, 1, 9, 5, 0, 0, 0];
-    board[2] = [0, 9, 8, 0, 0, 0, 0, 6, 0];
-    board[3] = [8, 0, 0, 0, 6, 0, 0, 0, 3];
-    board[4] = [4, 0, 0, 8, 0, 3, 0, 0, 1];
-    board[5] = [7, 0, 0, 0, 2, 0, 0, 0, 6];
-    board[6] = [0, 6, 0, 0, 0, 0, 2, 8, 0];
-    board[7] = [0, 0, 0, 4, 1, 9, 0, 0, 5];
-    board[8] = [0, 0, 0, 0, 8, 0, 0, 7, 9];
+    board[0] = [5, 3, 4, 6, 7, 8, 9, 1, 2];
+    board[1] = [6, 7, 2, 1, 9, 5, 3, 4, 8];
+    board[2] = [1, 9, 8, 3, 4, 2, 5, 6, 7];
+    board[3] = [8, 5, 9, 7, 6, 1, 4, 2, 3];
+    board[4] = [4, 2, 6, 8, 5, 3, 7, 9, 1];
+    board[5] = [7, 1, 3, 9, 2, 4, 8, 5, 6];
+    board[6] = [9, 6, 1, 5, 3, 7, 2, 8, 4];
+    board[7] = [2, 8, 7, 4, 1, 9, 6, 3, 5];
+    board[8] = [3, 4, 5, 2, 8, 6, 1, 7, 9];
 }
