@@ -24,28 +24,47 @@ document.addEventListener('DOMContentLoaded', () =>  {
       randomNumber = Math.floor(Math.random() * squares.length)
       if (squares[randomNumber].innerHTML == 0) {
         squares[randomNumber].innerHTML = 2
-        checkForGameOver()
       } else generate()
+      checkForGameOver()
+    }
+
+    function updateRow(i, newRow) {
+      squares[i].innerHTML = newRow[0]
+      squares[i +1].innerHTML = newRow[1]
+      squares[i +2].innerHTML = newRow[2]
+      squares[i +3].innerHTML = newRow[3]    
+    }
+
+    function getRow(i){
+      let totalOne = squares[i].innerHTML
+      let totalTwo = squares[i+1].innerHTML
+      let totalThree = squares[i+2].innerHTML
+      let totalFour = squares[i+3].innerHTML
+      let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+
+      return row
     }
   
     function moveRight() {
       for (let i=0; i < 16; i++) {
         if (i % 4 === 0) {
-          let totalOne = squares[i].innerHTML
-          let totalTwo = squares[i+1].innerHTML
-          let totalThree = squares[i+2].innerHTML
-          let totalFour = squares[i+3].innerHTML
-          let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-  
+          // let totalOne = squares[i].innerHTML
+          // let totalTwo = squares[i+1].innerHTML
+          // let totalThree = squares[i+2].innerHTML
+          // let totalFour = squares[i+3].innerHTML
+          // let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+          let row = getRow(i)
+
           let filteredRow = row.filter(num => num)
           let missing = 4 - filteredRow.length
           let zeros = Array(missing).fill(0)
           let newRow = zeros.concat(filteredRow)
   
-          squares[i].innerHTML = newRow[0]
-          squares[i +1].innerHTML = newRow[1]
-          squares[i +2].innerHTML = newRow[2]
-          squares[i +3].innerHTML = newRow[3]
+          // squares[i].innerHTML = newRow[0]
+          // squares[i +1].innerHTML = newRow[1]
+          // squares[i +2].innerHTML = newRow[2]
+          // squares[i +3].innerHTML = newRow[3]
+          updateRow(i, newRow)
         }
       }
     }
@@ -53,63 +72,86 @@ document.addEventListener('DOMContentLoaded', () =>  {
     function moveLeft() {
       for (let i=0; i < 16; i++) {
         if (i % 4 === 0) {
-          let totalOne = squares[i].innerHTML
-          let totalTwo = squares[i+1].innerHTML
-          let totalThree = squares[i+2].innerHTML
-          let totalFour = squares[i+3].innerHTML
-          let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+          // let totalOne = squares[i].innerHTML
+          // let totalTwo = squares[i+1].innerHTML
+          // let totalThree = squares[i+2].innerHTML
+          // let totalFour = squares[i+3].innerHTML
+          // let row = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+          let row = getRow(i)
   
           let filteredRow = row.filter(num => num)
           let missing = 4 - filteredRow.length
           let zeros = Array(missing).fill(0)
           let newRow = filteredRow.concat(zeros)
   
-          squares[i].innerHTML = newRow[0]
-          squares[i +1].innerHTML = newRow[1]
-          squares[i +2].innerHTML = newRow[2]
-          squares[i +3].innerHTML = newRow[3]
+          // squares[i].innerHTML = newRow[0]
+          // squares[i +1].innerHTML = newRow[1]
+          // squares[i +2].innerHTML = newRow[2]
+          // squares[i +3].innerHTML = newRow[3]
+          updateRow(i, newRow)
         }
       }
     }
+
+    function getCol(i){
+      let totalOne = squares[i].innerHTML
+      let totalTwo = squares[i+4].innerHTML
+      let totalThree = squares[i+8].innerHTML
+      let totalFour = squares[i+12].innerHTML
+      let col = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+
+      return col
+    }
+
+    function updateCol(i, newCol) {
+      squares[i].innerHTML = newCol[0]
+      squares[i+4].innerHTML = newCol[1]
+      squares[i+8].innerHTML = newCol[2]
+      squares[i+12].innerHTML = newCol[3]
+    }    
   
   
     function moveUp() {
       for (let i=0; i < 4; i++) {
-        let totalOne = squares[i].innerHTML
-        let totalTwo = squares[i+width].innerHTML
-        let totalThree = squares[i+(width*2)].innerHTML
-        let totalFour = squares[i+(width*3)].innerHTML
-        let column = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-  
-        let filteredColumn = column.filter(num => num)
+        // let totalOne = squares[i].innerHTML
+        // let totalTwo = squares[i+width].innerHTML
+        // let totalThree = squares[i+(width*2)].innerHTML
+        // let totalFour = squares[i+(width*3)].innerHTML
+        // let column = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+        let col = getCol(i)
+
+        let filteredColumn = col.filter(num => num)
         let missing = 4 - filteredColumn.length
         let zeros = Array(missing).fill(0)
         let newColumn = filteredColumn.concat(zeros)
   
-        squares[i].innerHTML = newColumn[0]
-        squares[i +width].innerHTML = newColumn[1]
-        squares[i+(width*2)].innerHTML = newColumn[2]
-        squares[i+(width*3)].innerHTML = newColumn[3]
+        // squares[i].innerHTML = newColumn[0]
+        // squares[i+4].innerHTML = newColumn[1]
+        // squares[i+8].innerHTML = newColumn[2]
+        // squares[i+12].innerHTML = newColumn[3]
+        updateCol(i, newColumn)
       }
     }
   
     function moveDown() {
       for (let i=0; i < 4; i++) {
-        let totalOne = squares[i].innerHTML
-        let totalTwo = squares[i+width].innerHTML
-        let totalThree = squares[i+(width*2)].innerHTML
-        let totalFour = squares[i+(width*3)].innerHTML
-        let column = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+        // let totalOne = squares[i].innerHTML
+        // let totalTwo = squares[i+width].innerHTML
+        // let totalThree = squares[i+(width*2)].innerHTML
+        // let totalFour = squares[i+(width*3)].innerHTML
+        // let column = [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
+        let col = getCol(i)
   
-        let filteredColumn = column.filter(num => num)
+        let filteredColumn = col.filter(num => num)
         let missing = 4 - filteredColumn.length
         let zeros = Array(missing).fill(0)
         let newColumn = zeros.concat(filteredColumn)
   
-        squares[i].innerHTML = newColumn[0]
-        squares[i +width].innerHTML = newColumn[1]
-        squares[i+(width*2)].innerHTML = newColumn[2]
-        squares[i+(width*3)].innerHTML = newColumn[3]
+        // squares[i].innerHTML = newColumn[0]
+        // squares[i+4].innerHTML = newColumn[1]
+        // squares[i+8].innerHTML = newColumn[2]
+        // squares[i+12].innerHTML = newColumn[3]
+        updateCol(i, newColumn)
       }
     }
   
@@ -193,6 +235,39 @@ document.addEventListener('DOMContentLoaded', () =>  {
     }
   
     //check if there are no zeros on the board to lose
+    function checkAround(i) {
+      let adj = []
+      
+      if (i + 1 < 16){
+        adj.push(squares[i+1].innerHTML)
+      }
+      if (i - 1 > 0){
+        adj.push(squares[i-1].innerHTML)
+      }
+      if (i+4 < 16){        
+        adj.push(squares[i+4].innerHTML)
+      }
+      if (i - 4 > 0){
+        adj.push(squares[i-4].innerHTML)
+      }
+      console.log(adj)
+      adj.forEach((val) => {
+        if (squares[i].innerHTML === val || squares[i].innerHTML === 0) {
+          return true
+        }
+      })
+    }
+
+    function canMove(){
+      let move = false
+      for (let i = 0; i < 16; i++) {
+        if (checkAround(i)){
+          move = true
+        }
+      }
+      return move
+    }
+
     function checkForGameOver() {
       let zeros = 0
       for (let i=0; i < squares.length; i++) {
