@@ -7,7 +7,7 @@ body {
   h1 {
     font-size: 80px;
     line-height: 0.7;
-    color: #776E65;
+    color: rgb(99, 8, 255);
     margin: 0px;
   }
   
@@ -27,8 +27,8 @@ body {
     flex-wrap: wrap;
     width: 456px;
     height: 456px;
-    background-color: #BBADA0;
-    border: 7px solid #BBADA0;
+    background-color: #5940e2;
+    border: 7px solid #5940e2;
     border-radius: 6px;
     margin-top: 20px;
   }
@@ -39,7 +39,7 @@ body {
     margin: 7px;
     border-radius: 3px;
     background-color: #EEE4DA;
-    color: #afa192;
+    color: #e1cbfa;
     font-weight: bold;
     text-align: center;
     font-size: 60px;
@@ -51,7 +51,7 @@ body {
     width: 70px;
     height: 60px;
     border-radius: 3px;
-    background-color: #8f7a66;
+    background-color: rgb(99, 8, 255);
     color: #FFFFFF;
   }
   
