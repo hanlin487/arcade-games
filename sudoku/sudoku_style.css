@@ -7,6 +7,14 @@ h3 {
     /* padding: 20px; */
 } 
 
+h1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    margin-bottom: 10px;
+}
+
 .board {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto auto;
