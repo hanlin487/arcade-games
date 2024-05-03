@@ -6,20 +6,10 @@ window.onload = () => {
     tileSize = document.querySelectorAll(".tile")
     setupBoard();
     for (let t = 0; t < tileSize.length; t++) {
-        tileSize[t].addEventListener("focus", function(event) {
-            console.log("event listener was triggered");
-            // Save the initial value of the tile for comparison later
-            event.target.initialValue = event.target.innerText.trim();
-        });
-        tileSize[t].addEventListener("input", function(event) {
-            
-            let inputValue = event.target.innerText.trim();
-            inputValue = inputValue.replace(/\D/g, '');
-
-            if (inputValue.length > 1 || (inputValue.length === 1 && event.target.initialValue !== inputValue)) {
-                event.target.innerText = event.target.initialValue || '';
-            } else {
-                event.target.innerText = inputValue;
+        tileSize[t].addEventListener("keydown", (event) => {
+            if (isNaN(parseInt(event.key))) {
+                event.preventDefault();
+                event.target.innerText = '0';
             }
         });
     }
@@ -32,11 +22,17 @@ function setupBoard() {
 
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
-            tile = document.createElement("div")
+            tile = document.createElement("input")
             tile.classList.add("tile")
-            tile.innerText = "0";
-            tile.contentEditable = true;
+            tile.value = "0";
             tile.maxLength = 1;
+            if (j % 4 == 0) {
+                tile.readOnly = true;
+            }
+            else {
+                tile.value = ""
+                tile.readOnly = false;
+            }
             boardContainer.append(tile);
         }
     }
@@ -51,8 +47,8 @@ function resetBoard() {
 
     tiles = document.querySelectorAll(".tile")
     for (let i = 0; i < tiles.length; i++) {
-        if (tiles[i].contentEditable) {
-            tiles[i].innerText = "0";
+        if (!tiles[i].readOnly) {
+            tiles[i].value = "";
         }
     }
 }
