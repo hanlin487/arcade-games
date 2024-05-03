@@ -8,6 +8,7 @@ let food = {x : 0, y : 0}
 let snake = [{x : rows / 2 * tileSize, y : cols / 2 * tileSize}]
 let gameInterval
 let gameOver = false
+let gameWon = false
 
 /* load an initial state and wait for user input to begin game */
 window.onload = () => {
@@ -26,6 +27,9 @@ function run() {
         alert("Game Over!")
         clearInterval(gameInterval)
         return NaN
+    } else if (gameWon) {
+        alert("You Won")
+        clearInterval(gameInterval)
     }
     drawBoard()
     drawFood()
@@ -135,5 +139,8 @@ function checkGame() {
     }
     if (!validPos()) {
         gameOver = true
+    }
+    if (snake.length == rows * cols) {
+        gameWon = true
     }
 }
