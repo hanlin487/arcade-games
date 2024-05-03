@@ -59,13 +59,66 @@ function checkSolution() {
             else {
                 value = parseInt(value)
             }
+            row.push(value);
             index++;
         }
         player.push(row);
     }
 
     console.log(player)
+    
+    if (isSudokuValid(player)) {
+        console.log("Congratulations! You solved the Sudoku puzzle!");
+        // create div of text instead...
+    } else {
+        console.log("Oops! There seems to be a mistake in your solution.");
+    }
+}
 
+function isSudokuValid(board) {
+    for (let i = 0; i < 9; i++) {
+        if (!isRowValid(board, i) || !isColumnValid(board, i) || !isSquareValid(board, i)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isRowValid(board, row) {
+    var set = new Set();
+    for (let j = 0; j < 9; j++) {
+        if (board[row][j] !== 0 && set.has(board[row][j])) {
+            return false;
+        }
+        set.add(board[row][j]);
+    }
+    return true;
+}
+
+function isColumnValid(board, col) {
+    var set = new Set();
+    for (let i = 0; i < 9; i++) {
+        if (board[i][col] !== 0 && set.has(board[i][col])) {
+            return false;
+        }
+        set.add(board[i][col]);
+    }
+    return true;
+}
+
+function isSquareValid(board, square) {
+    var set = new Set();
+    var startRow = Math.floor(square / 3) * 3;
+    var startCol = (square % 3) * 3;
+    for (let i = startRow; i < startRow + 3; i++) {
+        for (let j = startCol; j < startCol + 3; j++) {
+            if (board[i][j] !== 0 && set.has(board[i][j])) {
+                return false;
+            }
+            set.add(board[i][j]);
+        }
+    }
+    return true;
 }
 
 function resetBoard() {
