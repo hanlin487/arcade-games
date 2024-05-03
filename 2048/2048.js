@@ -203,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
       for (let i=0; i < squares.length; i++) {
         if (squares[i].innerHTML == 2048) {
           resultDisplay.innerHTML = 'You WIN'
+          resultDisplay.style.color = white
           document.removeEventListener('keyup', control)
           setTimeout(() => clear(), 3000)
         }
@@ -252,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
       }
       if (zeros === 0) {
         resultDisplay.innerHTML = 'You LOSE'
+        resultDisplay.style.color = white
         document.removeEventListener('keyup', control)
         setTimeout(() => clear(), 3000)
       }
@@ -261,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () =>  {
     function clear() {
       clearInterval(myTimer)
     }
-  
   
     //add colours
     function addColours() {
