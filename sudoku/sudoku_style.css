@@ -1,6 +1,8 @@
 h3 {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    padding: 20px;
+    /* padding: 20px; */
 } 
 
 .board {
@@ -12,7 +14,7 @@ h3 {
     background-color: aqua;
     padding: 10px 0px 10px 10px;
     border: 10px;
-    margin: auto;
+    margin: 50px 50px 50px 50px;
 }
 
 .tile {
@@ -39,23 +41,22 @@ h3 {
     text-shadow: 1px;
     border-color: rgb(73, 49, 255);
     align-content: center;
-    margin: 0px 40px 40px 40px;
+    margin: 0px 40px 40px 0px;
 }
 
+.site {
+    flex-direction: column;
+}
 
 .no-edit {
     background-color: blanchedalmond;
-}
-
-.editable {
-    /* update this later */
 }
 
 .horizontal {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 0px 0px 75px 75px;
+    margin: auto;/*0px 0px 75px 75px;*/
 }
 
 .tile:nth-child(3n) {
@@ -73,4 +74,25 @@ h3 {
 .buttons {
     display: flex;
     flex-direction: column;
+}
+
+.win_response {
+    width: 300px;
+    height: 80px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: red; /* Example background color */
+    border: 1px solid darkgreen; /* Example border */
+    text-align: center; /* Center the text */
+    font-weight: bold; /* Make the text bold */
+    display: flex; /* Display as flex container */
+    flex-direction: row; /* Align items horizontally */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
