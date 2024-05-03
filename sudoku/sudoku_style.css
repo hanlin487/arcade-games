@@ -3,6 +3,7 @@ h3 {
     flex-direction: row;
     align-items: center;
     color: white;
+    margin-bottom: 10px;
     /* padding: 20px; */
 } 
 
@@ -58,6 +59,7 @@ h3 {
     flex-direction: row;
     align-items: center;
     margin: auto;/*0px 0px 75px 75px;*/
+    margin-bottom: 30px;
 }
 
 .tile:nth-child(3n) {
@@ -80,7 +82,7 @@ h3 {
 .win_response {
     width: 300px;
     height: 80px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 10px;
     background-color: red; /* Example background color */
     border: 1px solid darkgreen; /* Example border */

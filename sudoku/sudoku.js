@@ -9,7 +9,7 @@ window.onload = () => {
         tileSize[t].addEventListener("keydown", (event) => {
             if (isNaN(parseInt(event.key))) {
                 event.preventDefault();
-                event.target.innerText = '0';
+                event.target.value = '';
             }
         });
     }
@@ -76,7 +76,7 @@ function checkSolution() {
         message.innerText = "Congratulations! You solved the Sudoku puzzle!";
     } 
     else {
-        console.log("Oops! There seems to be a mistake in your solution.");
+        console.log("Oops! There's a mistake in your solution :/");
         message.innerText = "Oops! There seems to be a mistake in your solution.";
     }
 
