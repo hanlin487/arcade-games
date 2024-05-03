@@ -100,8 +100,6 @@ function isSudokuValid(board) {
     return true;
 }
 
-// numbers = [1,2,3,4,5,6,7,8,9]
-
 function isRowValid(board, row) {
     nums_seen = []
     for (let i = 0; i < 10; i++) {
@@ -177,7 +175,6 @@ function resetBoard() {
         }
     }
 
-    // if win_response div exists, delete it
     win_resp = document.querySelector(".win_response")
     if (win_resp != null) {
         win_resp.remove()
@@ -205,15 +202,3 @@ function fillSudoku(board) {
     board[7] = [0, 0, 0, 4, 1, 9, 0, 0, 5];
     board[8] = [0, 0, 0, 0, 8, 0, 0, 7, 9];
 }
-
-// function fillSudoku(board) {
-//     board[0] = [5, 3, 4, 6, 7, 8, 9, 1, 2];
-//     board[1] = [6, 7, 2, 1, 9, 5, 3, 4, 8];
-//     board[2] = [1, 9, 8, 3, 4, 2, 5, 6, 7];
-//     board[3] = [8, 5, 9, 7, 6, 1, 4, 2, 3];
-//     board[4] = [4, 2, 6, 8, 5, 3, 7, 9, 1];
-//     board[5] = [7, 1, 3, 9, 2, 4, 8, 5, 6];
-//     board[6] = [9, 6, 1, 5, 3, 7, 2, 8, 4];
-//     board[7] = [2, 8, 7, 4, 1, 9, 6, 3, 5];
-//     board[8] = [3, 4, 5, 2, 8, 6, 1, 7, 9];
-// }
