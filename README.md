@@ -1,4 +1,4 @@
-# 162-hw2
+# Intro
 Game arcade consisting of 2 orignal games and 1 integrated open source game.
 
 ## Snake
